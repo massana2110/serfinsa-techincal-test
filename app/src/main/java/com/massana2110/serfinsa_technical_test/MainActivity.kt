@@ -54,10 +54,12 @@ class MainActivity : ComponentActivity() {
                             onAddBusinessAction = { navController.navigate(Screen.Business.route) })
                     }
                     composable(Screen.Business.route) {
-                        AddBusinessScreen {
+                        AddBusinessScreen(onSaveBusiness = {
                             business.add(it)
                             navController.navigateUp()
-                        }
+                        }, onNavigateBack = {
+                            navController.navigateUp()
+                        })
                     }
                 }
             }

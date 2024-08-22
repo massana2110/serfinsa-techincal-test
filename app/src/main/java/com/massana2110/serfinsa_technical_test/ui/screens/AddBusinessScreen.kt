@@ -54,7 +54,11 @@ import com.massana2110.serfinsa_technical_test.ui.theme.orangePrimary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddBusinessScreen(modifier: Modifier = Modifier, onSaveBusiness: (Business) -> Unit) {
+fun AddBusinessScreen(
+    modifier: Modifier = Modifier,
+    onSaveBusiness: (Business) -> Unit,
+    onNavigateBack: () -> Unit
+) {
     var nameBusiness by remember { mutableStateOf("") }
     var departmentBusiness by remember { mutableStateOf("") }
     var municipality by remember { mutableStateOf("") }
@@ -71,7 +75,7 @@ fun AddBusinessScreen(modifier: Modifier = Modifier, onSaveBusiness: (Business) 
                 fontWeight = FontWeight.Bold
             )
         }, navigationIcon = {
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { onNavigateBack() }) {
                 Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
             }
         })
@@ -287,5 +291,5 @@ fun AddBusinessScreen(modifier: Modifier = Modifier, onSaveBusiness: (Business) 
 @Preview(showSystemUi = true)
 @Composable
 private fun AddBusinessScreenPrev() {
-    AddBusinessScreen() {}
+    AddBusinessScreen(onSaveBusiness = {}) {}
 }
