@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.massana2110.serfinsa_technical_test.ui.screens.LoginScreen
 import com.massana2110.serfinsa_technical_test.ui.theme.SerfinsatechnicaltestTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,28 +21,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             SerfinsatechnicaltestTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    LoginScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
 
+@Preview
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
+private fun ScreenPreview() {
     SerfinsatechnicaltestTheme {
-        Greeting("Android")
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            LoginScreen(modifier = Modifier.padding(innerPadding))
+        }
     }
 }
