@@ -51,7 +51,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen(modifier: Modifier = Modifier, onLoginAction: () -> Unit) {
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -105,7 +105,8 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                         isLoading = false
                     } else {
                         isLoading = false
-                        Toast.makeText(context, "Error al iniciar sesion", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Error al iniciar sesion", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             },
@@ -199,5 +200,7 @@ fun LoginInput(
 @Preview(showBackground = true)
 @Composable
 private fun LoginScreenPreview() {
-    LoginScreen()
+    LoginScreen() {
+
+    }
 }
