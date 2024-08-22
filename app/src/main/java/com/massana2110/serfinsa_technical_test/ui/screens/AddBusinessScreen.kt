@@ -1,6 +1,8 @@
 package com.massana2110.serfinsa_technical_test.ui.screens
 
 import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -66,6 +68,12 @@ fun AddBusinessScreen(
     var phoneNumber by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var image by remember { mutableStateOf<Uri?>(null) }
+
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        image = uri
+    }
 
     Scaffold(topBar = {
         TopAppBar(title = {
@@ -231,7 +239,7 @@ fun AddBusinessScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),
-                onClick = { /*TODO*/ },
+                onClick = { launcher.launch("image/*") },
                 colors = ButtonDefaults.textButtonColors(
                     contentColor = orangePrimary
                 )
