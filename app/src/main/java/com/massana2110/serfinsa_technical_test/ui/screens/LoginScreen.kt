@@ -103,9 +103,10 @@ fun LoginScreen(modifier: Modifier = Modifier, onLoginAction: () -> Unit) {
                     if (loginAction(email, password)) {
                         delay(3000)
                         isLoading = false
+                        onLoginAction()
                     } else {
                         isLoading = false
-                        Toast.makeText(context, "Error al iniciar sesion", Toast.LENGTH_SHORT)
+                        Toast.makeText(context, "Error al iniciar sesion, valide datos", Toast.LENGTH_SHORT)
                             .show()
                     }
                 }
